@@ -1,0 +1,98 @@
+<h4>Formularios <small> tipo </small></h4>
+<hr>
+<form autocomplete="off" (ngSubmit)="guardar()" [formGroup]="forma"   >
+
+  <div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Nombre</label>
+      <div class="col">
+
+        <input class="form-control"
+               type="text"
+               placeholder="Nombre"
+               formControlName="nombre" 
+               [class.is-invalid]="nombreNoValido"      
+               >
+               <small *ngIf="nombreNoValido" class="text-danger"  > Debe ser Mayor a 5 Caracteres </small>
+      </div>
+    </div>
+<br>
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Apellido</label>
+      <div class="col">
+
+        <input class="form-control"
+               type="text"
+               placeholder="Apellido"
+               formControlName="apellido" 
+               [class.is-invalid]="apellidoNoValido" >
+               <small *ngIf="apellidoNoValido" class="text-danger"  > Ingrese el Apellido </small>
+      </div>
+    </div>
+
+  </div>
+  <br>
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Correo</label>
+    <div class="col">
+
+      <input class="form-control"
+             type="email"
+             placeholder="Correo electrónico"
+             formControlName="correo"
+             [class.is-invalid]="correoNoValido"  >
+             <small *ngIf="nombreNoValido" class="text-danger"  > Corre no valido </small>
+    </div>
+  </div>
+  <br>
+<!-- nuevos campos -->
+<div class="form-group row" formGroupName="direccion" >
+  <label class="col-2 col-form-label">Direccion</label>
+    <div class="form-row col">
+
+      <div class="col">
+
+      <input type="text" 
+             class="form-control"   
+              placeholder="Distrito"
+              formControlName="distrito">
+
+      </div>
+
+      <div class="col">
+        <br>
+      <input type="text" 
+             class="form-control"   
+             placeholder="Ciudad"
+             formControlName="ciudad">
+
+
+    </div>
+    
+  </div>
+</div>
+<!-- nuevos campos -->
+
+
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">&nbsp;</label>
+    <div class="input-group col-md-8">
+      <button type="submit" class="btn btn-outline-primary btn-block">
+        Guardar
+      </button>
+    </div>
+  </div>
+
+</form>
+
+<hr>
+<pre>
+  Estado del Formulario: {{forma.valid}}
+  <br>
+  Status: {{forma.status}}
+</pre>
+<pre>
+  {{forma.value | json}}
+</pre>
